@@ -3,26 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Typer Project</title>
+    <link rel="stylesheet" href="css/libs/materialize.min.css">
+    <link rel="stylesheet" href="css/libs/google-fonts.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <h1>Typer Project</h1>
-    <p class="phrase">Test phrase with six words haha</p>
+    <div class="container">
+        <h1 class="center">Typer Project</h1>
+        <p class="phrase center">Test phrase with six words haha</p>
+    
+        <ul class="informations center">
+            <li>
+                <i class="material-icons icons">keyboard</i>
+                <span id="phraseSize">n</span> words
+            </li>
+            <li>
+                <i class="material-icons icons">query_builder</i>
+                <span id="digitationTime">5</span> seconds
+            </li>
+        </ul>
+    
+        <textarea class="digitationField" rows="8" cols="40"></textarea>
 
-    <ul class="informations">
-        <li><span id="phraseSize">30</span> words</li>
-        <li><span id="digitationTime">10</span> seconds</li>
-    </ul>
+        <div class="buttons">
+            <a id="resetButton" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">restore</i></a>
+        </div>
 
-    <textarea class="digitationField" rows="8" cols="40"></textarea>
+        <ul class="center">
+            <li><span id="characterCount">0</span> characters</li>
+            <li><span id="wordCount">0</span> words</li>
+        </ul>
 
-    <ul>
-        <li><span id="characterCount">0</span> characters</li>
-        <li><span id="wordCount">0</span> words</li>
-    </ul>
+        <section class="score">
+            <h3 class="center">Score</h3>
+            <table class="centered bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Words No.</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                </tbody>
+            </table>
+        </section>
 
-    <button id="resetButton">Reset timer</button>
+    </div>
 
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/score.js"></script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+.phrase {
+  font-size: 20px;
+}
+
+.digitationField {
+  border: 3px solid black;
+  font-size: 20px;
+  height: 130px;
+}
+
+.disabled-field {
+  background-color: lightgray;
+}
+
+.icons {
+  vertical-align: middle;
+}
+
+.right-value {
+  color: lightgreen;
+}
+
+.wrong-value {
+  color: lightcoral;
+}

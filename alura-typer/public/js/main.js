@@ -1,6 +1,7 @@
 
 var digitationField = $('.digitationField');
 var initialTime = $('#digitationTime').text();
+var phrase = $(".phrase").text();
 var intervalId;
 
 $(function() {
@@ -8,12 +9,12 @@ $(function() {
   setCounters();
   setTimer();
   $("#resetButton").click(resetGame);
+  initializeMarkers();
 });
 
 function updatePhraseSize() {
-  var frase = $(".phrase").text();
   /* /\S+/ is a regular expression to not count whitespace */
-  var numWords = frase.split(/\S+/).length - 1;
+  var numWords = phrase.split(/\S+/).length - 1;
   var phraseSize = $("#phraseSize");
   phraseSize.text(numWords); 
 }
@@ -38,16 +39,39 @@ function setTimer() {
       $('#digitationTime').text(digitationTime);
   
       if (digitationTime < 1) {
-        digitationField.attr("disabled", true);
         clearInterval(intervalId);
+        endGame();
       }
     }, 1000)
   })
 }
 
+function endGame() {
+  digitationField.attr("disabled", true);
+  digitationField.addClass("disabled-field");
+  insertIntoScore();
+}
+
+function initializeMarkers() {
+  digitationField.on("input", function() {
+    var enteredValue =  digitationField.val();
+    var valueToCompare = phrase.substr(0, enteredValue.length);
+  
+    if (valueToCompare == enteredValue) {
+      digitationField.removeClass("wrong-value");
+      digitationField.addClass("right-value");
+    }
+    else {
+      digitationField.removeClass("right-value");
+      digitationField.addClass("wrong-value");
+    }
+  });
+}
+
 function resetGame() {
   clearInterval(intervalId);
   digitationField.attr("disabled", false);
+  digitationField.removeClass("disabled-field");
   digitationField.val("");
 
   $("#characterCount").text("0")
@@ -56,3 +80,4 @@ function resetGame() {
   $('#digitationTime').text(initialTime);
   setTimer();
 }
+
